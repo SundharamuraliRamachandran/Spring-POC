@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<alias name="triangle" alias="triangle-alias" />
+	<bean id="triangle" class="org.spring.poc.Triangle" autowire="byName" scope="prototype">
+	
+	</bean>
+	<!-- <bean id="triangle" class="org.spring.poc.Triangle">
+		<property name="points">
+			<list>
+				<ref bean="point1" />
+				<ref bean="point2" />
+				<ref bean="point3" />
+			</list>
+		</property>
+	</bean> -->
+
+	<!-- <bean id="triangle" class="org.spring.poc.Triangle"> <property name="pointA" 
+		ref="point1" /> <property name="pointB" ref="point2" /> <property name="pointB"> 
+		<bean class="org.spring.poc.Point"> <property name="x" value="-20" /> <property 
+		name="y" value="0" /> </bean> </property> <property name="pointC" ref="point3" 
+		/> <property name="pointC"> <bean class="org.spring.poc.Point"> <property 
+		name="x" value="20" /> <property name="y" value="0" /> </bean> </property> 
+		</bean> -->
+
+	<bean id="pointA" class="org.spring.poc.Point">
+		<property name="x" value="0" />
+		<property name="y" value="0" />
+	</bean>
+
+	<bean id="pointB" class="org.spring.poc.Point">
+		<property name="x" value="-20" />
+		<property name="y" value="0" />
+	</bean>
+
+	<bean id="pointC" class="org.spring.poc.Point">
+		<property name="x" value="20" />
+		<property name="y" value="0" />
+	</bean>
+	<!-- Example 1 -->
+	<!-- <bean id="triangle" class="org.spring.poc.Triangle"> Type 1 <property 
+		name="type" value="Equilateral"></property> End Type 1 Type 2 <constructor-arg 
+		value="Equilateral" /> <constructor-arg value="20" /> End Type 2 Type 3 <constructor-arg 
+		type="java.lang.String" value="Equilateral" /> <constructor-arg type="int" 
+		value="20" /> End Type 3 Type 4 <constructor-arg index="0" value="Equilateral" 
+		/> <constructor-arg index="1" value="20" /> End Type 4 </bean> -->
+	<!-- End Example 1 -->
+</beans>
