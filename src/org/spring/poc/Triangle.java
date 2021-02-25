@@ -2,12 +2,18 @@ package org.spring.poc;
 
 import java.util.List;
 
-public class Triangle {
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+
+public class Triangle implements ApplicationContextAware, BeanNameAware {
 	
 	//private List<Point> points;
 	private Point pointA;
 	private Point pointB;
 	private Point pointC;
+	private ApplicationContext context = null;
 	
 	public void draw() {
 		System.out.println("Point :" + pointA.toString());
@@ -37,6 +43,16 @@ public class Triangle {
 
 	public void setPointC(Point pointC) {
 		this.pointC = pointC;
+	}
+
+	@Override
+	public void setApplicationContext(ApplicationContext context) throws BeansException {
+		this.context = context;
+	}
+
+	@Override
+	public void setBeanName(String beanName) {
+		System.out.println("Bean name is:" + beanName);
 	}
 
 	/*
