@@ -9,41 +9,44 @@ import org.springframework.context.ApplicationContextAware;
 
 public class Triangle implements ApplicationContextAware, BeanNameAware {
 	
-	//private List<Point> points;
-	private Point pointA;
-	private Point pointB;
-	private Point pointC;
+	private List<Point> points;
+//	private Point pointA;
+//	private Point pointB;
+//	private Point pointC;
 	private ApplicationContext context = null;
 	
 	public void draw() {
-		System.out.println("Point :" + pointA.toString());
-		System.out.println("Point :" + pointB.toString());
-		System.out.println("Point :" + pointC.toString());
+		for(Point point : points) {
+			System.out.println("Point :" + point.toString());
+		}
+//		System.out.println("Point :" + pointA.toString());
+//		System.out.println("Point :" + pointB.toString());
+//		System.out.println("Point :" + pointC.toString());
 	}
 
-	public Point getPointA() {
-		return pointA;
-	}
-
-	public void setPointA(Point pointA) {
-		this.pointA = pointA;
-	}
-
-	public Point getPointB() {
-		return pointB;
-	}
-
-	public void setPointB(Point pointB) {
-		this.pointB = pointB;
-	}
-
-	public Point getPointC() {
-		return pointC;
-	}
-
-	public void setPointC(Point pointC) {
-		this.pointC = pointC;
-	}
+//	public Point getPointA() {
+//		return pointA;
+//	}
+//
+//	public void setPointA(Point pointA) {
+//		this.pointA = pointA;
+//	}
+//
+//	public Point getPointB() {
+//		return pointB;
+//	}
+//
+//	public void setPointB(Point pointB) {
+//		this.pointB = pointB;
+//	}
+//
+//	public Point getPointC() {
+//		return pointC;
+//	}
+//
+//	public void setPointC(Point pointC) {
+//		this.pointC = pointC;
+//	}
 
 	@Override
 	public void setApplicationContext(ApplicationContext context) throws BeansException {
@@ -53,6 +56,14 @@ public class Triangle implements ApplicationContextAware, BeanNameAware {
 	@Override
 	public void setBeanName(String beanName) {
 		System.out.println("Bean name is:" + beanName);
+	}
+
+	public List<Point> getPoints() {
+		return points;
+	}
+
+	public void setPoints(List<Point> points) {
+		this.points = points;
 	}
 
 	/*

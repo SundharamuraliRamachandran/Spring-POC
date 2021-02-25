@@ -5,12 +5,22 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	<alias name="triangle" alias="triangle-alias" />
 	
-	<bean id="parenttriangle" class="org.spring.poc.Triangle" scope="prototype">
-		<property name="pointA" ref="pointA"/>
+	<bean id="parenttriangle" class="org.spring.poc.Triangle" abstract="true">
+<!-- 		<property name="pointA" ref="pointA"/> -->
+		<property name="points">
+			<list>
+				<ref bean="pointA"/>
+			</list>
+		</property>
 	</bean>
-	<bean id="triangle1" class="org.spring.poc.Triangle" scope="prototype" parent="parenttriangle">
-		<property name="pointB" ref="pointB"/>
-		<property name="pointC" ref="pointC"/>
+	<bean id="triangle1" class="org.spring.poc.Triangle" parent="parenttriangle">
+<!-- 		<property name="pointB" ref="pointB"/> -->
+<!-- 		<property name="pointC" ref="pointC"/> -->
+			<property name="points">
+				<list merge="true">
+					<ref bean="pointB"/>
+				</list>
+			</property>
 	</bean>
 	
 	<bean id="triangle2" class="org.spring.poc.Triangle" scope="prototype" parent="parenttriangle">
