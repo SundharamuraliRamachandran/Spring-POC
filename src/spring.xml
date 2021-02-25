@@ -4,8 +4,17 @@
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	<alias name="triangle" alias="triangle-alias" />
-	<bean id="triangle" class="org.spring.poc.Triangle" autowire="byName" scope="prototype">
 	
+	<bean id="parenttriangle" class="org.spring.poc.Triangle" scope="prototype">
+		<property name="pointA" ref="pointA"/>
+	</bean>
+	<bean id="triangle1" class="org.spring.poc.Triangle" scope="prototype" parent="parenttriangle">
+		<property name="pointB" ref="pointB"/>
+		<property name="pointC" ref="pointC"/>
+	</bean>
+	
+	<bean id="triangle2" class="org.spring.poc.Triangle" scope="prototype" parent="parenttriangle">
+		<property name="pointB" ref="pointB"/>
 	</bean>
 	<!-- <bean id="triangle" class="org.spring.poc.Triangle">
 		<property name="points">
