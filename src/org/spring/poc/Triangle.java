@@ -1,70 +1,72 @@
 package org.spring.poc;
 
-import java.util.List;
-
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 
-public class Triangle implements ApplicationContextAware, BeanNameAware {
+public class Triangle implements InitializingBean, DisposableBean {
 	
-	private List<Point> points;
-//	private Point pointA;
-//	private Point pointB;
-//	private Point pointC;
+	//private List<Point> points;
+	private Point pointA;
+	private Point pointB;
+	private Point pointC;
 	private ApplicationContext context = null;
 	
+	public void myInit() {
+		System.out.println("myInit method called for Triangle bean");
+	}
+	
+	public void myDestroy() {
+		System.out.println("myDestroy method called for Triangle bean");
+	}
+	
 	public void draw() {
-		for(Point point : points) {
-			System.out.println("Point :" + point.toString());
-		}
-//		System.out.println("Point :" + pointA.toString());
-//		System.out.println("Point :" + pointB.toString());
-//		System.out.println("Point :" + pointC.toString());
+		System.out.println("Point :" + pointA.toString());
+		System.out.println("Point :" + pointB.toString());
+		System.out.println("Point :" + pointC.toString());
 	}
 
-//	public Point getPointA() {
-//		return pointA;
-//	}
-//
-//	public void setPointA(Point pointA) {
-//		this.pointA = pointA;
-//	}
-//
-//	public Point getPointB() {
-//		return pointB;
-//	}
-//
-//	public void setPointB(Point pointB) {
-//		this.pointB = pointB;
-//	}
-//
-//	public Point getPointC() {
-//		return pointC;
-//	}
-//
-//	public void setPointC(Point pointC) {
-//		this.pointC = pointC;
-//	}
-
-	@Override
-	public void setApplicationContext(ApplicationContext context) throws BeansException {
-		this.context = context;
+	public Point getPointA() {
+		return pointA;
 	}
 
-	@Override
-	public void setBeanName(String beanName) {
-		System.out.println("Bean name is:" + beanName);
+	public void setPointA(Point pointA) {
+		this.pointA = pointA;
 	}
 
-	public List<Point> getPoints() {
-		return points;
+	public Point getPointB() {
+		return pointB;
 	}
 
-	public void setPoints(List<Point> points) {
-		this.points = points;
+	public void setPointB(Point pointB) {
+		this.pointB = pointB;
 	}
+
+	public Point getPointC() {
+		return pointC;
+	}
+
+	public void setPointC(Point pointC) {
+		this.pointC = pointC;
+	}
+
+	
+	  @Override public void afterPropertiesSet() throws Exception {
+	  System.out.println("Init method called for Triangle bean"); }
+	  
+	  @Override public void destroy() throws Exception {
+	  System.out.println("Triangle bean destroyed"); }
+	 
+
+//	@Override
+//	public void setApplicationContext(ApplicationContext context) throws BeansException {
+//		this.context = context;
+//	}
+//
+//	@Override
+//	public void setBeanName(String beanName) {
+//		System.out.println("Bean name is:" + beanName);
+//	}
 
 	/*
 	 * private String type; private int height;
